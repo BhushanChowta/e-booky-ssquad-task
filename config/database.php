@@ -36,14 +36,15 @@ return [
     'connections' => [
         'mongodb' => [
             'driver'   => 'mongodb',
-            'host'     => env('DB_HOST', '127.0.0.1'),
-            'port'     => env('DB_PORT', 27017),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', ''),
-            'password' => env('DB_PASSWORD', ''),
-            'options'  => [
-                'database' => 'admin' // Set the authentication database, usually 'admin'
-            ],
+            'dsn' => env('DB_URI', ''),
+            // 'host'     => env('DB_HOST', '127.0.0.1'),
+            // 'port'     => env('DB_PORT', 27017),
+            'database' => env('DB_DATABASE', 'cluster0'),
+            // 'username' => env('DB_USERNAME', ''),
+            // 'password' => env('DB_PASSWORD', ''),
+            // 'options'  => [
+            //     'database' => 'admin' // Set the authentication database, usually 'admin'
+            // ],
         ],        
         'sqlite' => [
             'driver' => 'sqlite',
