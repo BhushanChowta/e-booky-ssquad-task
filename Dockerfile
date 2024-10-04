@@ -14,12 +14,11 @@ RUN pecl install mongodb \
 
 
 # Install the OpenSSL extension using PECL
-RUN pecl install openssl \
-    && docker-php-ext-enable openssl
+RUN docker-php-ext-enable openssl
+
 
 # Set up php.ini
 RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
-RUN echo "extension=openssl.so" >> /usr/local/etc/php/conf.d/docker-php-ext-openssl.ini
 
 # Set the working directory
 WORKDIR /var/www
