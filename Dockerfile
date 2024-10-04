@@ -30,5 +30,5 @@ RUN composer install --no-dev --optimize-autoloader
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Command to run the application (replace with your actual command)
-CMD ["php-fpm"]
+# Command to run the Laravel application
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
