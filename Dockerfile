@@ -1,13 +1,12 @@
 # Start from the PHP 8.3 image
 FROM php:8.3-fpm
 
-# Install system dependencies and PHP extensions
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     libzip-dev \
-    libssl-dev \
     git \
     unzip \
-    && docker-php-ext-install zip \
+    && docker-php-ext-install zip
     && docker-php-ext-install openssl
 
 # Install the MongoDB extension
