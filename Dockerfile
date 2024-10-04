@@ -6,9 +6,9 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     git \
     unzip \
-    libssl-dev \   # Add OpenSSL library
+    libssl-dev \   
     && docker-php-ext-install zip \
-    && docker-php-ext-install openssl  # Enable OpenSSL extension
+    && docker-php-ext-install openssl 
 
 # Install the MongoDB extension
 RUN pecl install mongodb \
