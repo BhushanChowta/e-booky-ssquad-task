@@ -1,23 +1,21 @@
 # Start from the PHP 8.3 image
 FROM php:8.3-fpm
 
-# Install system dependencies and PHP extensions
+# Install system dependencies including OpenSSL
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     git \
     unzip \
-    libssl-dev \
+    libssl-dev \   # Add OpenSSL library
     && docker-php-ext-install zip \
-    && docker-php-ext-install opcache \
-    && docker-php-ext-install openssl \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+    && docker-php-ext-install openssl  # Enable OpenSSL extension
 
 # Install the MongoDB extension
 RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
 
 # Set up php.ini
-RUN echo "extension=mongodb.so" > /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
 
 # Set the working directory
 WORKDIR /var/www
