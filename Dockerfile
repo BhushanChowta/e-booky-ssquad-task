@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     git \
     unzip \
+    libssl-dev \
     && docker-php-ext-install zip \
     && docker-php-ext-install openssl
 
