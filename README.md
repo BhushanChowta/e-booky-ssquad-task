@@ -24,3 +24,11 @@ Here are some key snapshots of the website developed:
 
 - **Customer Registration**  
   ![Customer Registration](public/assets/readme/1.PNG)
+
+## Setup
+
+1. Clone the repository.
+2. Install the PHP(8.3).
+2. Run 'composer install'.
+4. Set up your `.env` file with the appropriate configuration values.
+5. Start the Laravel development server 'php artisan serve'.
