@@ -1,14 +1,24 @@
-# Use the official PHP image as a base
+# Start from the PHP 8.3 image
 FROM php:8.3-fpm
 
-# Install MongoDB PHP driver
-RUN apt-get update && apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev && \
-    pecl install mongodb && docker-php-ext-enable mongodb
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libzip-dev \
+    git \
+    unzip \
+    && docker-php-ext-install zip
 
-# Set working directory
+# Install the MongoDB extension
+RUN pecl install mongodb \
+    && docker-php-ext-enable mongodb
+
+# Set up php.ini
+RUN echo "extension=mongodb.so" >> /usr/local/etc/php/conf.d/docker-php-ext-mongodb.ini
+
+# Set the working directory
 WORKDIR /var/www
 
-# Copy the application code
+# Copy the existing application directory contents
 COPY . .
 
 # Install Composer
@@ -20,5 +30,5 @@ RUN composer install --no-dev --optimize-autoloader
 # Expose the port the app runs on
 EXPOSE 8080
 
-# Start PHP-FPM server
+# Command to run the application (replace with your actual command)
 CMD ["php-fpm"]
